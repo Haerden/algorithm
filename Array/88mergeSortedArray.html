@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/logo.png">
+    <title>88merge sorted arrays</title>
+    <script>
+        function mergeSortedArray(nums1, m, nums2, n) {
+            let i = m - 1, j = n - 1, right = nums1.length - 1;
+
+            while (right > -1) {
+                if (i === -1) {
+                    nums1[right--] = nums2[j--];
+                    continue;
+                }
+                if (j === -1) {
+                    nums1[right--] = nums2[i--];
+                    continue;
+                }
+
+                if (nums1[i] <= nums2[j]) {
+                    nums1[right--] = nums2[j--];
+                } else {
+                    nums1[right--] = nums1[i--];
+                }
+            }
+
+            return nums1;
+        }
+
+        console.log(mergeSortedArray([0, 1, 2, 0, 0, 0], 3, [2, 4, 6], 3));
+        console.log(mergeSortedArray([2, 2, 0, 0, 0], 2, [0, 1, 5], 3));
+    </script>
+</head>
+
+<body>
+    <h3>一次归并排序</h3>
+    <img src="img/85.png" height="50%" width="60%" />
+</body>
+
+</html>
