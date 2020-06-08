@@ -4,11 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../static/logo.png"> 
+    <link rel="shortcut icon" href="../static/logo.png">
     <title>215kthLargestinArray</title>
     <script>
         function kthLargestInArray(nums, k) {
+            const targetIndex = nums.length - k;
 
+            return recurse(0, nums.length - 1);
+
+            function recurse(left, right) {
+
+            }
+
+            function partition(left, right) {
+                let pIndex = left;
+
+                // for (let i = left; i < right; i++) {
+                //     if()
+                // }
+            }
+
+            function swap(left, right) {
+                // This happens when number already in place
+                // if (left === right) return true;
+
+                const temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+            }
         }
 
         console.log(kthLargestInArray([0, 1, 2, 0], 2));

@@ -3,4 +3,4 @@
 al-by-js
 
 
-## 2020-06-08 uopdate
+## 2020-06-08 update
