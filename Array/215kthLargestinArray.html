@@ -8,34 +8,49 @@
     <title>215kthLargestinArray</title>
     <script>
         function kthLargestInArray(nums, k) {
+            // 目标索引 
             const targetIndex = nums.length - k;
+            let left = 0;
+            let right = nums.length - 1;
 
-            return recurse(0, nums.length - 1);
-
-            function recurse(left, right) {
-
-            }
-
-            function partition(left, right) {
-                let pIndex = left;
-
-                // for (let i = left; i < right; i++) {
-                //     if()
-                // }
-            }
-
-            function swap(left, right) {
-                // This happens when number already in place
-                // if (left === right) return true;
-
-                const temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
+            while(true) {
+                const index = partition(nums, left, right);
+                if(targetIndex === index) {
+                    return nums[index];
+                } else if(targetIndex < index) {
+                    right = index -1;
+                } else {
+                    left = index + 1;
+                }
             }
         }
 
-        console.log(kthLargestInArray([0, 1, 2, 0], 2));
-        console.log(kthLargestInArray([2, 2, 0, 1, 2], 3));
+        function partition(nums, left, right) {
+            // [left + 1 , j ] < pivot , (j, i] >= pivot
+            let pivot = nums[left];
+            let j = left;
+            for(let i = left + 1; i <= right; i++) {
+                if(nums[i] < pivot) {
+                    j++;
+                    swap(nums,i ,j);
+                }
+            }
+
+            // 满足 [left+1, j] < pivot
+            swap(nums, j, left);
+
+            return j;
+
+        }
+
+        const swap = function (nums, n, m) {
+            let tmp = nums[n];
+            nums[n] = nums[m];
+            nums[m] = tmp;
+        }
+
+        console.log(kthLargestInArray([10, 1, 2, 0], 2));
+        console.log(kthLargestInArray([12, 22, 10, 1, 2], 3));
     </script>
 </head>
 
